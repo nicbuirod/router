@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react"
 
 import { Header } from "../components/Header"
 import { Footer } from "../components/Footer"
-import { Card } from "../components/Card"
 import { Loader } from "../components/Loader"
+import { CardList } from "../components/CardList"
 
 
 const RickAndMorty = ()=>{
@@ -35,11 +35,9 @@ const RickAndMorty = ()=>{
     return (
         <>
         <Header>Header</Header>
-         {loader && <Loader/>}
-            <div>{characters.length>=1 && characters.map((item, index)=>(
-                <Card key={index} name={item.name} image={item.image}></Card>
-            ))}</div>
-        <Footer>Footer</Footer>
+       {loader && <Loader/>}
+       <CardList list={characters}/>
+       <Footer>Footer</Footer>
         </>
     )
 }

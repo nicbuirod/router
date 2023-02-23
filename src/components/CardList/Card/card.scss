@@ -1,0 +1,25 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+.card {
+    width: 33%;
+    border: 1px solid $secondaryColor;    
+    padding: 14px;
+    border-radius: 5px;    
+    @include flex(flex, space-around);
+        &__img{ 
+            width: 50%;
+            border: solid 1px black;
+
+            img{
+                width: 100%;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }   
+
+        &__title{
+            max-width: 120px;
+        }
+}
