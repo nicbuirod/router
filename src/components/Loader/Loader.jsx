@@ -6,7 +6,7 @@ const Loader = ()=>{
 
     return (
         <div className="loader">
-           prueba de loader
+           <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>
     )
 }
