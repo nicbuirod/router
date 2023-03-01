@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 90vh;
+
+    &__card{
+        background-color: rgba(160, 204, 93, 0.507);
+        width: 200px;
+        height: 255px;
+        border-radius: 15px;
+        box-shadow: 10px 10px 10px rgba(3, 95, 3, 0.562);
+    }
+}
+
+.picture{
+    border: solid 2px rgba(146, 99, 13, 0.658);
+    margin-top: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
