@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Context } from "../context";
+import { RAMDetail } from "../components/RAMDetail";
 
 const RAMDetails = () => {
   const [character, setCharacter] = useState({});
@@ -9,28 +10,39 @@ const RAMDetails = () => {
   const { rickAndMorty } = context || {};
   const { characters } = rickAndMorty || [];
 
-  console.log("idparam", idParam);
+  const { id, species, gender, name, status, image } = character || {};
 
   useEffect(() => {
     const item = characters.find((item) => item.id === +idParam);
-    setCharacter(item);
+    console.log("item..", item);
+    if (item) {
+      setCharacter(item);
+    } else {
+      getOneCharacter(idParam);
+    }
   }, []);
 
-  useEffect(() => {
-    console.log("character", character);
-  }, [character]);
-
-  //Character by id
+  const getOneCharacter = async (id) => {
+    const url = `https://rickandmortyapi.com/api/character/${id}`;
+    try {
+      const request = await fetch(url);
+      const data = await request.json();
+      console.log("DATA", data);
+      setCharacter(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <div>
-      <strong>Id:</strong> {character.id}
-      <strong>Species:</strong> {character.species}
-      <strong>gender:</strong> {character.gender}
-      <strong>Name:</strong> {character.name}
-      <strong>Status:</strong> {character.status}
-      <img src={character.image} alt="" />
-    </div>
+    <RAMDetail
+      id={id}
+      species={species}
+      name={name}
+      status={status}
+      image={image}
+      gender={gender}
+    />
   );
 };
 

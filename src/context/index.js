@@ -7,5 +7,6 @@ export const initialContext = {
   pokemon: {
     characters: [],
   },
+  redirectDetailsRouter: "",
 };
 export const Context = React.createContext(initialContext);
