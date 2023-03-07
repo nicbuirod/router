@@ -1,28 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Context } from "../context";
+import { getOnePokemonDetail } from "../services/pokemonAPI";
 
 import "../styles/rampokemon.scss";
 
-const RAMDetailspokemon = () => {
+const Detailspokemon = () => {
   const [character, setCharacter] = useState({});
   const { id } = useParams();
   const context = useContext(Context);
   const { pokemon } = context || {};
   const { characters } = pokemon || [];
-  console.log("aca los caracteres", characters);
-  //console.log("idparam", name);
+
   useEffect(() => {
     const item = characters.find((item) => item.id === +id);
-
-    setCharacter(item);
+    if (item) {
+      setCharacter(item);
+    } else {
+      getData(id);
+    }
   }, []);
 
-  useEffect(() => {
-    console.log("character", character);
-  }, [character]);
-
-  //Character by id
+  const getData = async (id) => {
+    const data = await getOnePokemonDetail(id);
+    setCharacter(data);
+  };
 
   return (
     <div className="container">
@@ -43,4 +45,4 @@ const RAMDetailspokemon = () => {
   );
 };
 
-export default RAMDetailspokemon;
+export default Detailspokemon;
