@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Context } from "../context";
 import { RAMDetail } from "../components/RAMDetail";
+import { getOneCharacter } from "../services/rickAndMortyAPI";
 
 const RAMDetails = () => {
   const [character, setCharacter] = useState({});
@@ -18,20 +19,12 @@ const RAMDetails = () => {
     if (item) {
       setCharacter(item);
     } else {
-      getOneCharacter(idParam);
+      getData(idParam);
     }
   }, []);
-
-  const getOneCharacter = async (id) => {
-    const url = `https://rickandmortyapi.com/api/character/${id}`;
-    try {
-      const request = await fetch(url);
-      const data = await request.json();
-      console.log("DATA", data);
-      setCharacter(data);
-    } catch (error) {
-      console.log(error);
-    }
+  const getData = async (id) => {
+    const data = await getOneCharacter(id);
+    setCharacter(data);
   };
 
   return (
