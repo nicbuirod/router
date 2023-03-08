@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { RickAndMorty, Pokemon, RAMDetails, RAMDetailspokemon } from "../pages";
+import { RickAndMorty, Pokemon, RAMDetails, Detailspokemon } from "../pages";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/pokemon/:id",
-    element: <RAMDetailspokemon />,
+    element: <Detailspokemon />,
   },
 ]);
 
