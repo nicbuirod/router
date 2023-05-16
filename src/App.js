@@ -10,7 +10,9 @@ function App() {
   return (
     <Context.Provider value={initialContext}>
       <div className="App">
+        <Header />
         <CustomRouter />
+        <Footer />
       </div>
     </Context.Provider>
   );

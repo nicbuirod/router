@@ -2,6 +2,7 @@ import React from "react";
 import "./ram-detail.scss";
 
 const RAMDetail = ({ id, species, gender, name, status, image }) => {
+  console.log("ramd", id);
   return (
     <div className="ram-detail">
       <span>
